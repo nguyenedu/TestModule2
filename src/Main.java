@@ -1,3 +1,14 @@
+import exception.CourseNotFoundException;
+import exception.DuplicateStudentException;
+import exception.InvalidScoreException;
+import exception.StudentNotFoundException;
+import model.Course;
+import model.FullTimeStudent;
+import model.PartTimeStudent;
+import model.Student;
+import service.StudentManagement;
+import task.ScoreInputTask;
+
 import java.util.*;
 
 public class Main {
@@ -17,7 +28,7 @@ public class Main {
                 switch (choice) {
                     case 0:
                         running = false;
-                        System.out.println("Cảm ơn đã sử dụng hệ thống!");
+                        System.out.println("Cảm ơn đã sử dụng hệ thống");
                         break;
                     case 1:
                         management.initSampleData();
@@ -50,10 +61,10 @@ public class Main {
                         autoInputScoresWithThreads();
                         break;
                     default:
-                        System.out.println("Lựa chọn không hợp lệ!");
+                        System.out.println("Lựa chọn không hợp lệ");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số!");
+                System.out.println("Vui lòng nhập số");
             } catch (Exception e) {
                 System.out.println("Lỗi: " + e.getMessage());
             }
@@ -100,7 +111,7 @@ public class Main {
             } else if (type == 2) {
                 student = new PartTimeStudent(id, name, email);
             } else {
-                System.out.println("Loại sinh viên không hợp lệ!");
+                System.out.println("Loại sinh viên không hợp lệ");
                 return;
             }
 
@@ -108,7 +119,7 @@ public class Main {
         } catch (DuplicateStudentException e) {
             System.out.println("Lỗi: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Lỗi: Dữ liệu không hợp lệ!");
+            System.out.println("Lỗi: Dữ liệu không hợp lệ");
         }
     }
 
@@ -128,7 +139,7 @@ public class Main {
         } catch (DuplicateStudentException e) {
             System.out.println("Lỗi: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Lỗi: Dữ liệu không hợp lệ!");
+            System.out.println("Lỗi: Dữ liệu không hợp lệ");
         }
     }
 
@@ -161,7 +172,7 @@ public class Main {
         } catch (StudentNotFoundException | CourseNotFoundException | InvalidScoreException e) {
             System.out.println("Lỗi: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Lỗi: Dữ liệu không hợp lệ!");
+            System.out.println("Lỗi: Dữ liệu không hợp lệ");
         }
     }
 
@@ -198,7 +209,7 @@ public class Main {
                     System.out.println("Loại: " + s.getRole());
                     System.out.printf("GPA: %.2f\n", s.getGpa());
                 } else {
-                    System.out.println("Không tìm thấy sinh viên!");
+                    System.out.println("Không tìm thấy sinh viên");
                 }
             } else if (choice == 2) {
                 System.out.print("Nhập tên (hoặc một phần tên): ");
@@ -209,7 +220,7 @@ public class Main {
 
                 List<Student> results = management.searchStudent(name, minGpa);
                 if (results.isEmpty()) {
-                    System.out.println("Không tìm thấy sinh viên nào!");
+                    System.out.println("Không tìm thấy sinh viên nào");
                 } else {
                     System.out.println("\nDanh sách sinh viên tìm thấy:");
                     for (Student s : results) {
@@ -219,7 +230,7 @@ public class Main {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Lỗi: Dữ liệu không hợp lệ!");
+            System.out.println("Lỗi: Dữ liệu không hợp lệ");
         }
     }
 
@@ -252,12 +263,12 @@ public class Main {
                     System.out.println("\nDanh sách sinh viên (Tên A-Z):");
                     break;
                 default:
-                    System.out.println("Lựa chọn không hợp lệ!");
+                    System.out.println("Lựa chọn không hợp lệ");
                     return;
             }
 
             if (results.isEmpty()) {
-                System.out.println("Không có sinh viên nào!");
+                System.out.println("Không có sinh viên nào");
             } else {
                 for (Student s : results) {
                     System.out.printf("- %s (%s) - GPA: %.2f - %s\n",
@@ -265,7 +276,7 @@ public class Main {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Lỗi: Dữ liệu không hợp lệ!");
+            System.out.println("Lỗi: Dữ liệu không hợp lệ");
         }
     }
 
@@ -276,7 +287,7 @@ public class Main {
 
             Optional<Student> studentOpt = management.searchStudent(studentId);
             if (!studentOpt.isPresent()) {
-                System.out.println("Không tìm thấy sinh viên!");
+                System.out.println("Không tìm thấy sinh viên");
                 return;
             }
 
@@ -298,7 +309,7 @@ public class Main {
         try {
             List<Student> allStudents = management.getStudentRepository().findAll();
             if (allStudents.isEmpty()) {
-                System.out.println("Không có sinh viên nào trong hệ thống!");
+                System.out.println("Không có sinh viên nào trong hệ thống");
                 return;
             }
 
@@ -333,7 +344,7 @@ public class Main {
                 thread.join();
             }
 
-            System.out.println("Đã nhập điểm tự động cho tất cả sinh viên bằng " + numThreads + " luồng!");
+            System.out.println("Đã nhập điểm tự động cho tất cả sinh viên bằng " + numThreads + " luồng");
             System.out.println("Tổng số sinh viên: " + allStudents.size());
         } catch (Exception e) {
             System.out.println("Lỗi: " + e.getMessage());
