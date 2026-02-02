@@ -1,7 +1,5 @@
 package model;
 
-import model.Course;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

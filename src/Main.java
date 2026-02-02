@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Main {
     private static StudentManagement management = new StudentManagement();
-    private static Scanner scanner = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         boolean running = true;
@@ -23,7 +23,7 @@ public class Main {
             System.out.print("Chọn chức năng: ");
 
             try {
-                int choice = Integer.parseInt(scanner.nextLine());
+                int choice = Integer.parseInt(sc.nextLine());
 
                 switch (choice) {
                     case 0:
@@ -72,7 +72,7 @@ public class Main {
             System.out.println();
         }
 
-        scanner.close();
+        sc.close();
     }
 
     private static void printMenu() {
@@ -94,16 +94,16 @@ public class Main {
     private static void addStudent() {
         try {
             System.out.print("Nhập loại sinh viên (1-Full time, 2-Part time): ");
-            int type = Integer.parseInt(scanner.nextLine());
+            int type = Integer.parseInt(sc.nextLine());
 
             System.out.print("Nhập mã sinh viên: ");
-            String id = scanner.nextLine();
+            String id = sc.nextLine();
 
             System.out.print("Nhập họ tên: ");
-            String name = scanner.nextLine();
+            String name = sc.nextLine();
 
             System.out.print("Nhập email: ");
-            String email = scanner.nextLine();
+            String email = sc.nextLine();
 
             Student student;
             if (type == 1) {
@@ -126,13 +126,13 @@ public class Main {
     private static void addCourse() {
         try {
             System.out.print("Nhập mã khóa học: ");
-            String id = scanner.nextLine();
+            String id = sc.nextLine();
 
             System.out.print("Nhập tên khóa học: ");
-            String name = scanner.nextLine();
+            String name = sc.nextLine();
 
             System.out.print("Nhập số tín chỉ: ");
-            int credits = Integer.parseInt(scanner.nextLine());
+            int credits = Integer.parseInt(sc.nextLine());
 
             Course course = new Course(id, name, credits);
             management.addCourse(course);
@@ -146,10 +146,10 @@ public class Main {
     private static void enrollStudentToCourse() {
         try {
             System.out.print("Nhập mã sinh viên: ");
-            String studentId = scanner.nextLine();
+            String studentId = sc.nextLine();
 
             System.out.print("Nhập mã khóa học: ");
-            String courseId = scanner.nextLine();
+            String courseId = sc.nextLine();
 
             management.enrollStudentToCourse(studentId, courseId);
         } catch (StudentNotFoundException | CourseNotFoundException e) {
@@ -160,13 +160,13 @@ public class Main {
     private static void inputScore() {
         try {
             System.out.print("Nhập mã sinh viên: ");
-            String studentId = scanner.nextLine();
+            String studentId = sc.nextLine();
 
             System.out.print("Nhập mã khóa học: ");
-            String courseId = scanner.nextLine();
+            String courseId = sc.nextLine();
 
             System.out.print("Nhập điểm (0-10): ");
-            double score = Double.parseDouble(scanner.nextLine());
+            double score = Double.parseDouble(sc.nextLine());
 
             management.inputScore(studentId, courseId, score);
         } catch (StudentNotFoundException | CourseNotFoundException | InvalidScoreException e) {
@@ -179,7 +179,7 @@ public class Main {
     private static void viewStudentScoreBoard() {
         try {
             System.out.print("Nhập mã sinh viên: ");
-            String studentId = scanner.nextLine();
+            String studentId = sc.nextLine();
 
             management.printStudentScoreBoard(studentId);
         } catch (StudentNotFoundException e) {
@@ -193,11 +193,11 @@ public class Main {
         System.out.print("Chọn: ");
 
         try {
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = Integer.parseInt(sc.nextLine());
 
             if (choice == 1) {
                 System.out.print("Nhập mã sinh viên: ");
-                String id = scanner.nextLine();
+                String id = sc.nextLine();
 
                 Optional<Student> result = management.searchStudent(id);
                 if (result.isPresent()) {
@@ -213,10 +213,10 @@ public class Main {
                 }
             } else if (choice == 2) {
                 System.out.print("Nhập tên (hoặc một phần tên): ");
-                String name = scanner.nextLine();
+                String name = sc.nextLine();
 
                 System.out.print("Nhập GPA tối thiểu: ");
-                double minGpa = Double.parseDouble(scanner.nextLine());
+                double minGpa = Double.parseDouble(sc.nextLine());
 
                 List<Student> results = management.searchStudent(name, minGpa);
                 if (results.isEmpty()) {
@@ -242,7 +242,7 @@ public class Main {
         System.out.print("Chọn: ");
 
         try {
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = Integer.parseInt(sc.nextLine());
             List<Student> results = new ArrayList<>();
 
             switch (choice) {
@@ -283,7 +283,7 @@ public class Main {
     private static void calculateTuition() {
         try {
             System.out.print("Nhập mã sinh viên: ");
-            String studentId = scanner.nextLine();
+            String studentId = sc.nextLine();
 
             Optional<Student> studentOpt = management.searchStudent(studentId);
             if (!studentOpt.isPresent()) {

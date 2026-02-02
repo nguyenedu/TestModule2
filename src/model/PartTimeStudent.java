@@ -1,7 +1,5 @@
 package model;
 
-import model.Student;
-
 public class PartTimeStudent extends Student {
     private static final double PRICE_PER_COURSE = 500.0;
 

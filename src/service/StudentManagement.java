@@ -26,11 +26,11 @@ public class StudentManagement {
 
     public void initSampleData() {
         Course[] courses = {
-                new Course("C001", "Lập trình Java", 3),
-                new Course("C002", "Cơ sở dữ liệu", 4),
-                new Course("C003", "Mạng máy tính", 3),
-                new Course("C004", "Thuật toán", 4),
-                new Course("C005", "Công nghệ Web", 3)
+                new Course("001", "Lập trình Java", 3),
+                new Course("002", "Cơ sở dữ liệu", 4),
+                new Course("003", "Mạng máy tính", 3),
+                new Course("004", "Thuật toán", 4),
+                new Course("005", "Công nghệ Web", 3)
         };
 
         for (Course course : courses) {
