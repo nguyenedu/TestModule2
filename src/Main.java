@@ -202,12 +202,12 @@ public class Main {
                 Optional<Student> result = management.searchStudent(id);
                 if (result.isPresent()) {
                     Student s = result.get();
-                    System.out.println("\nTìm thấy sinh viên:");
+                    System.out.println("Tìm thấy sinh viên:");
                     System.out.println("Mã: " + s.getId());
                     System.out.println("Tên: " + s.getName());
                     System.out.println("Email: " + s.getEmail());
                     System.out.println("Loại: " + s.getRole());
-                    System.out.printf("GPA: %.2f\n", s.getGpa());
+                    System.out.printf("GPA: %.2f", s.getGpa());
                 } else {
                     System.out.println("Không tìm thấy sinh viên");
                 }
@@ -222,9 +222,9 @@ public class Main {
                 if (results.isEmpty()) {
                     System.out.println("Không tìm thấy sinh viên nào");
                 } else {
-                    System.out.println("\nDanh sách sinh viên tìm thấy:");
+                    System.out.println("Danh sách sinh viên tìm thấy:");
                     for (Student s : results) {
-                        System.out.printf("- %s (%s) - GPA: %.2f - %s\n",
+                        System.out.printf("- %s (%s) - GPA: %.2f - %s",
                                 s.getName(), s.getId(), s.getGpa(), s.getRole());
                     }
                 }
@@ -248,19 +248,19 @@ public class Main {
             switch (choice) {
                 case 1:
                     results = management.filterStudents(s -> s.getGpa() > 8.0);
-                    System.out.println("\nSinh viên có GPA > 8:");
+                    System.out.println("Sinh viên có GPA > 8:");
                     break;
                 case 2:
                     results = management.filterStudents(s -> s.getRole().equals("FULL_TIME"));
-                    System.out.println("\nSinh viên Full-time:");
+                    System.out.println("Sinh viên Full-time:");
                     break;
                 case 3:
                     results = management.sortStudentsByGpaDesc();
-                    System.out.println("\nDanh sách sinh viên (GPA giảm dần):");
+                    System.out.println("Danh sách sinh viên (GPA giảm dần):");
                     break;
                 case 4:
                     results = management.sortStudentsByNameAsc();
-                    System.out.println("\nDanh sách sinh viên (Tên A-Z):");
+                    System.out.println("Danh sách sinh viên (Tên A-Z):");
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ");
@@ -271,7 +271,7 @@ public class Main {
                 System.out.println("Không có sinh viên nào");
             } else {
                 for (Student s : results) {
-                    System.out.printf("- %s (%s) - GPA: %.2f - %s\n",
+                    System.out.printf("- %s (%s) - GPA: %.2f - %s",
                             s.getName(), s.getId(), s.getGpa(), s.getRole());
                 }
             }
@@ -294,12 +294,12 @@ public class Main {
             Student student = studentOpt.get();
             double tuition = management.calculateTuition(student);
 
-            System.out.println("\n===== THÔNG TIN HỌC PHÍ =====");
+            System.out.println("===== THÔNG TIN HỌC PHÍ =====");
             System.out.println("Sinh viên: " + student.getName());
             System.out.println("Mã SV: " + student.getId());
             System.out.println("Loại: " + student.getRole());
             System.out.println("Số khóa đã đăng ký: " + student.getEnrolledCourses().size());
-            System.out.printf("Học phí: %.2f VNĐ\n", tuition);
+            System.out.printf("Học phí: %.2f VNĐ", tuition);
         } catch (Exception e) {
             System.out.println("Lỗi: " + e.getMessage());
         }
