@@ -38,16 +38,16 @@ public class StudentManagement {
         }
 
         Student[] students = {
-                new FullTimeStudent("FT001", "Nguyễn Văn An", "an@email.com"),
-                new FullTimeStudent("FT002", "Trần Thị Bình", "binh@email.com"),
-                new FullTimeStudent("FT003", "Lê Văn Cường", "cuong@email.com"),
-                new FullTimeStudent("FT004", "Phạm Thị Dung", "dung@email.com"),
-                new FullTimeStudent("FT005", "Hoàng Văn Em", "em@email.com"),
-                new PartTimeStudent("PT001", "Đỗ Thị Phương", "phuong@email.com"),
-                new PartTimeStudent("PT002", "Vũ Văn Giang", "giang@email.com"),
-                new PartTimeStudent("PT003", "Bùi Thị Hà", "ha@email.com"),
-                new PartTimeStudent("PT004", "Ngô Văn Inh", "inh@email.com"),
-                new PartTimeStudent("PT005", "Mai Thị Kiều", "kieu@email.com")
+                new FullTimeStudent("001", "Nguyễn Văn An", "an@email.com"),
+                new FullTimeStudent("002", "Trần Thị Bình", "binh@email.com"),
+                new FullTimeStudent("003", "Lê Văn Cường", "cuong@email.com"),
+                new FullTimeStudent("004", "Phạm Thị Dung", "dung@email.com"),
+                new FullTimeStudent("005", "Hoàng Văn Em", "em@email.com"),
+                new PartTimeStudent("006", "Đỗ Thị Phương", "phuong@email.com"),
+                new PartTimeStudent("007", "Vũ Văn Giang", "giang@email.com"),
+                new PartTimeStudent("008", "Bùi Thị Hà", "ha@email.com"),
+                new PartTimeStudent("009", "Ngô Văn Inh", "inh@email.com"),
+                new PartTimeStudent("010", "Mai Thị Kiều", "kieu@email.com")
         };
 
         Random random = new Random();
