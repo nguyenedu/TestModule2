@@ -63,23 +63,23 @@ public class StudentManagement {
             }
         }
 
-        System.out.println("Đã khởi tạo dữ liệu mẫu thành công!");
+        System.out.println("Đã khởi tạo dữ liệu mẫu thành công");
     }
 
     public void addStudent(Student student) throws DuplicateStudentException {
         if (studentRepository.exists(student.getId())) {
-            throw new DuplicateStudentException("Sinh viên với ID " + student.getId() + " đã tồn tại!");
+            throw new DuplicateStudentException("Sinh viên với ID " + student.getId() + " đã tồn tại");
         }
         studentRepository.add(student.getId(), student);
-        System.out.println("Đã thêm sinh viên thành công!");
+        System.out.println("Đã thêm sinh viên thành công");
     }
 
     public void addCourse(Course course) throws DuplicateStudentException {
         if (courseRepository.exists(course.getCourseId())) {
-            throw new DuplicateStudentException("Khóa học với ID " + course.getCourseId() + " đã tồn tại!");
+            throw new DuplicateStudentException("Khóa học với ID " + course.getCourseId() + " đã tồn tại");
         }
         courseRepository.add(course.getCourseId(), course);
-        System.out.println("Đã thêm khóa học thành công!");
+        System.out.println("Đã thêm khóa học thành công");
     }
 
     public void enrollStudentToCourse(String studentId, String courseId)
@@ -98,12 +98,12 @@ public class StudentManagement {
         Course course = courseOpt.get();
 
         if (student.getEnrolledCourses().contains(course)) {
-            System.out.println("Sinh viên đã đăng ký khóa học này rồi!");
+            System.out.println("Sinh viên đã đăng ký khóa học này rồi");
             return;
         }
 
         student.enrollCourse(course);
-        System.out.println("Đăng ký khóa học thành công!");
+        System.out.println("Đăng ký khóa học thành công");
     }
 
     public void inputScore(String studentId, String courseId, double score)
@@ -117,12 +117,12 @@ public class StudentManagement {
         }
 
         if (score < 0 || score > 10) {
-            throw new InvalidScoreException("Điểm phải trong khoảng 0-10!");
+            throw new InvalidScoreException("Điểm phải trong khoảng 0-10");
         }
 
         scoreBoard.putIfAbsent(studentId, new HashMap<>());
         scoreBoard.get(studentId).put(courseId, score);
-        System.out.println("Đã nhập điểm thành công!");
+        System.out.println("Đã nhập điểm thành công");
     }
 
     public synchronized void safeInputScore(String studentId, String courseId, double score)
@@ -137,15 +137,15 @@ public class StudentManagement {
         }
 
         Student student = studentOpt.get();
-        System.out.println("\n===== BẢNG ĐIỂM SINH VIÊN =====");
+        System.out.println("===== BẢNG ĐIỂM SINH VIÊN =====");
         System.out.println("Mã SV: " + student.getId());
         System.out.println("Họ tên: " + student.getName());
         System.out.println("Loại: " + student.getRole());
-        System.out.println("\nĐIỂM CHI TIẾT:");
+        System.out.println("ĐIỂM CHI TIẾT:");
 
         Map<String, Double> scores = scoreBoard.get(studentId);
         if (scores == null || scores.isEmpty()) {
-            System.out.println("Chưa có điểm nào!");
+            System.out.println("Chưa có điểm nào");
             return;
         }
 
@@ -155,7 +155,7 @@ public class StudentManagement {
             String courseId = course.getCourseId();
             if (scores.containsKey(courseId)) {
                 double score = scores.get(courseId);
-                System.out.printf("- %s (%s): %.2f\n",
+                System.out.printf("- %s (%s): %.2f",
                         course.getCourseName(), courseId, score);
                 sum += score;
                 count++;
@@ -165,7 +165,7 @@ public class StudentManagement {
         if (count > 0) {
             double average = sum / count;
             student.setGpa(average);
-            System.out.printf("\nĐIỂM TRUNG BÌNH: %.2f\n", average);
+            System.out.printf("ĐIỂM TRUNG BÌNH: %.2f", average);
         }
     }
 
